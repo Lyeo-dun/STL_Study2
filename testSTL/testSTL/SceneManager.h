@@ -6,6 +6,7 @@ class SceneManager
 {
 private:
 	static SceneManager* Instance;
+
 public:
 	static SceneManager* GetInstace() 
 	{
