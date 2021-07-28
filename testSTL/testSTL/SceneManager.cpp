@@ -29,12 +29,15 @@ void SceneManager::SetScene(SCENEID _SceneId)
 
 void SceneManager::Update()
 {
+	SceneState->Update();
 }
 
 void SceneManager::Render()
 {
+	SceneState->Render();
 }
 
 void SceneManager::Release()
 {
+	SceneState->Release();
 }
