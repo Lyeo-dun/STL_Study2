@@ -4,7 +4,7 @@
 class Object
 {
 protected:
-	map<string, list<char*>> texture;
+	map<string, list<char*>> Texture;
 	Transform TransInfo;
 
 public:
