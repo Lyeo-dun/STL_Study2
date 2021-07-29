@@ -1,9 +1,8 @@
 #pragma once
 #include "Object.h"
 
-class Player : public Object
+class Bullet : public Object
 {
-	
 public:
 	virtual void Initialize()override;
 	virtual void Update()override;
@@ -11,7 +10,7 @@ public:
 	virtual void Release()override;
 
 public:
-	Player();
-	virtual ~Player()override;
+	Bullet();
+	virtual ~Bullet()override;
 };
 
