@@ -11,6 +11,9 @@ Player::~Player()
 
 void Player::Initialize()
 {
+	m_pKey = "Player";
+
+	Active = true;
 }
 
 void Player::Update()

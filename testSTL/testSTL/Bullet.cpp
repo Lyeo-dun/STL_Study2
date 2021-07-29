@@ -11,6 +11,9 @@ Bullet::~Bullet()
 
 void Bullet::Initialize()
 {
+	m_pKey = "Bullet";
+
+	Active = false;
 }
 
 void Bullet::Update()
