@@ -8,7 +8,7 @@ public:
 	static Object* CreateObject()
 	{
 		Object* _obj = new T;
-		_obj->initialize();
+		_obj->Initialize();
 
 		return _obj;
 	}
