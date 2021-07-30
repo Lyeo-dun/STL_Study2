@@ -69,7 +69,7 @@ void Player::Initialize()
 		//´ë±â
 		Right.push_back((char*)"   o");
 		Right.push_back((char*)"<(-|)");
-		Right.push_back((char*)"  / \\");
+		Right.push_back((char*)"  / ¡¬");
 
 		AddTexture(DIR_RIGHT, IDLE, 0, Right);
 		Right.clear();
@@ -84,14 +84,14 @@ void Player::Initialize()
 
 		Right.push_back((char*)" o");
 		Right.push_back((char*)"(|-)>");
-		Right.push_back((char*)"/ \\");
+		Right.push_back((char*)"/ ¡¬");
 
 		AddTexture(DIR_RIGHT, WALK, 1, Right);
 		Right.clear();
 
 		Right.push_back((char*)" o");
 		Right.push_back((char*)"(|-)>");
-		Right.push_back((char*)" >\\");
+		Right.push_back((char*)" >¡¬");
 
 		AddTexture(DIR_RIGHT, WALK, 2, Right);
 		Right.clear();
