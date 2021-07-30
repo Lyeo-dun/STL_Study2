@@ -24,7 +24,10 @@ void ObjectManager::Update()
 	{
 		for (list<Object*>::iterator iter2 = iter->second.begin(); iter2 != iter->second.end(); ++iter2)
 		{
-			(*iter2)->Update();
+			if ((*iter2)->isActive())
+			{
+				(*iter2)->Update();
+			}
 		}
 	}
 }
@@ -35,7 +38,10 @@ void ObjectManager::Render()
 	{
 		for (list<Object*>::iterator iter2 = iter->second.begin(); iter2 != iter->second.end(); ++iter2)
 		{
-			(*iter2)->Render();
+			if ((*iter2)->isActive())
+			{
+				(*iter2)->Render();
+			}
 		}
 	}
 }
