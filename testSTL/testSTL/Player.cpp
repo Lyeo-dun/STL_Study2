@@ -26,38 +26,38 @@ void Player::Initialize()
 		vector<char*> Left;
 
 		//대기 모션
-		Left.push_back((char*)" o");
-		Left.push_back((char*)"(|-)>");
-		Left.push_back((char*)"/ ＼");
+		Left.push_back((char*)"   o");
+		Left.push_back((char*)"<(-|)");
+		Left.push_back((char*)"  / ＼");
 
 		AddTexture(DIR_LEFT, IDLE, 0, Left);
 		Left.clear();
 
 		//걷기
-		Left.push_back((char*)" o");
-		Left.push_back((char*)"(|-)>");
-		Left.push_back((char*)"/ >");
-
+		Left.push_back((char*)"   o");
+		Left.push_back((char*)"<(-|)");
+		Left.push_back((char*)"  / <");
+		
 		AddTexture(DIR_LEFT, WALK, 0, Left);
 		Left.clear();
 
-		Left.push_back((char*)" o");
-		Left.push_back((char*)"(|-)>");
-		Left.push_back((char*)"/ ＼");
+		Left.push_back((char*)"   o");
+		Left.push_back((char*)"<(-|)");
+		Left.push_back((char*)"  / ＼");
 
 		AddTexture(DIR_LEFT, WALK, 1, Left);
 		Left.clear();
 
-		Left.push_back((char*)" o");
-		Left.push_back((char*)"(|-)>");
-		Left.push_back((char*)" >＼");
+		Left.push_back((char*)"   o");
+		Left.push_back((char*)"<(-|)");
+		Left.push_back((char*)"  < ＼");
 
 		AddTexture(DIR_LEFT, WALK, 2, Left);
 		Left.clear();
 
-		Left.push_back((char*)" o");
-		Left.push_back((char*)"(|-)>");
-		Left.push_back((char*)"/ ＼");
+		Left.push_back((char*)"   o");
+		Left.push_back((char*)"<(-|)");
+		Left.push_back((char*)"  / ＼");
 	
 		AddTexture(DIR_LEFT, WALK, 3, Left);
 		Left.clear();
@@ -67,9 +67,9 @@ void Player::Initialize()
 		vector<char*> Right;
 
 		//대기
-		Right.push_back((char*)"   o");
-		Right.push_back((char*)"<(-|)");
-		Right.push_back((char*)"  / ＼");
+		Right.push_back((char*)" o");
+		Right.push_back((char*)"(|-)>");
+		Right.push_back((char*)"/ ＼");
 
 		AddTexture(DIR_RIGHT, IDLE, 0, Right);
 		Right.clear();
@@ -98,7 +98,7 @@ void Player::Initialize()
 
 		Right.push_back((char*)" o");
 		Right.push_back((char*)"(|-)>");
-		Right.push_back((char*)"/ \\");
+		Right.push_back((char*)"/ ＼");
 
 		AddTexture(DIR_RIGHT, WALK, 3, Right);
 		Right.clear();
