@@ -49,6 +49,9 @@
     <Filter Include="소스 파일\99. Manager\ObjectFactory">
       <UniqueIdentifier>{73da83d1-e956-4715-a5f0-a1440e2ae63c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\99. Manager\InputManager">
+      <UniqueIdentifier>{96e255a7-576c-4d0b-b518-f15e9f87d37b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

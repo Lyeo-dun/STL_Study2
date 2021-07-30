@@ -4,7 +4,8 @@
 class Object
 {
 protected:
-	map<string, list<char*>> Texture;
+	map<int, vector<char*>> Texture[MOTION_MAX][KINDS_MAX];
+
 	Transform TransInfo;
 	bool Active;
 	
@@ -16,6 +17,8 @@ public:
 	virtual void Release() = 0;
 
 public:
+	void AddTexture(MOTION_DIRECTION _Dir, MOTION_KINDS _MotionKinds, int _MotionOrder, vector<char*> _texture);
+
 	string GetKey() { return m_pKey; }
 	bool isActive() { return Active; }
 

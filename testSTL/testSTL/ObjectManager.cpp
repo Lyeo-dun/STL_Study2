@@ -11,6 +11,7 @@ ObjectManager::~ObjectManager()
 {
 }
 
+ObjectManager* ObjectManager::Instance = NULL;
 
 void ObjectManager::Initialize()
 {
@@ -19,21 +20,42 @@ void ObjectManager::Initialize()
 
 void ObjectManager::Update()
 {
-
+	for (map<string, list<Object*>>::iterator iter = ObjectList.begin(); iter != ObjectList.end(); ++iter)
+	{
+		for (list<Object*>::iterator iter2 = iter->second.begin(); iter2 != iter->second.end(); ++iter2)
+		{
+			(*iter2)->Update();
+		}
+	}
 }
 
 void ObjectManager::Render()
 {
+	for (map<string, list<Object*>>::iterator iter = ObjectList.begin(); iter != ObjectList.end(); ++iter)
+	{
+		for (list<Object*>::iterator iter2 = iter->second.begin(); iter2 != iter->second.end(); ++iter2)
+		{
+			(*iter2)->Render();
+		}
+	}
 }
 
 void ObjectManager::Release()
 {
+	for (map<string, list<Object*>>::iterator iter = ObjectList.begin(); iter != ObjectList.end(); ++iter)
+	{
+		for (list<Object*>::iterator iter2 = iter->second.begin(); iter2 != iter->second.end(); ++iter2)
+		{
+			SAFE_RELEASE(*iter2);
+		}
+	}
+
+	ObjectList.clear();
 }
 
 void ObjectManager::AddObject(Object* _pObj)
 {
 	map<string, list<Object*>>::iterator iter = ObjectList.find(_pObj->GetKey());
-
 
 	if (iter == ObjectList.end())
 	{
