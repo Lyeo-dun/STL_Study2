@@ -1,6 +1,7 @@
 #include "MainUpdate.h"
 #include "DoubleBuffer.h"
 #include "SceneManager.h"
+#include "InputManager.h"
 
 MainUpdate::MainUpdate()
 {
@@ -19,6 +20,7 @@ void MainUpdate::Initialize()
 
 void MainUpdate::Update()
 {
+	InputManager::GetInstance()->Checkkey();
 	SceneManager::GetInstace()->Update();
 
 	DoubleBuffer::GetInstance()->FlippingBuffer();

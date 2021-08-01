@@ -16,7 +16,7 @@ class Player : public Object
 	MOTION_DIRECTION m_Left;
 
 	//플레이어 이동 제어
-	ULONGLONG MoveTime;
+	ULONGLONG FrameTime;
 	float Speed;
 
 	//플레이어 애니메이션 제어
@@ -27,6 +27,7 @@ class Player : public Object
 
 public:
 	void Jump();
+	void CheckKey();
 
 public:
 	virtual void Initialize()override;

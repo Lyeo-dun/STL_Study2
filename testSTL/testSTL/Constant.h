@@ -1,4 +1,9 @@
 #pragma once
 
+const ULONG KEYID_LEFT = 0x00000004;
+const ULONG KEYID_RIGHT = 0x00000008;
+
+const ULONG KEYID_SPACE = 0x00000010;
+
 const int CONSOL_MAX_WIDTH = 121;
-const int CONSOL_MAX_HEIGHT = 31;
+const int CONSOL_MAX_HEIGHT = 41;
