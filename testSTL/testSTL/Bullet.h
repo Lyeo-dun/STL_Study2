@@ -3,6 +3,10 @@
 
 class Bullet : public Object
 {
+	float Speed;
+
+	ULONGLONG FrameTime;
+
 public:
 	virtual void Initialize()override;
 	virtual void Update()override;

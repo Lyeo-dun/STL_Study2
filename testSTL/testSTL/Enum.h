@@ -16,5 +16,6 @@ enum MOTION_KINDS
 {
 	IDLE,
 	WALK,
+	BULLET,
 	KINDS_MAX
 };

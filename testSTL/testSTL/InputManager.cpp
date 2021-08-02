@@ -16,13 +16,21 @@ void InputManager::Checkkey()
 {
 	m_ulKey = 0;
 
-	if (GetAsyncKeyState(VK_LEFT))
+	if (GetAsyncKeyState('A'))
 	{
 		m_ulKey |= KEYID_LEFT;
 	}
-	if (GetAsyncKeyState(VK_RIGHT))
+	if (GetAsyncKeyState('D'))
 	{
 		m_ulKey |= KEYID_RIGHT;
+	}
+	if (GetAsyncKeyState(VK_RETURN))
+	{
+		m_ulKey |= KEYID_RETURN;
+	}
+	if (GetAsyncKeyState(VK_SPACE))
+	{
+		m_ulKey |= KEYID_SPACE;
 	}
 
 }

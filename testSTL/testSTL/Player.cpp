@@ -37,7 +37,7 @@ void Player::Initialize()
 		//°È±â
 		Left.push_back((char*)"   o");
 		Left.push_back((char*)"<(-|)");
-		Left.push_back((char*)"  / <");
+		Left.push_back((char*)"  < ¡¬");
 		
 		AddTexture(DIR_LEFT, WALK, 0, Left);
 		Left.clear();
@@ -51,7 +51,7 @@ void Player::Initialize()
 
 		Left.push_back((char*)"   o");
 		Left.push_back((char*)"<(-|)");
-		Left.push_back((char*)"  < ¡¬");
+		Left.push_back((char*)"  / <");
 
 		AddTexture(DIR_LEFT, WALK, 2, Left);
 		Left.clear();
@@ -108,16 +108,34 @@ void Player::Initialize()
 	m_Left = DIR_LEFT;
 	Motion = 0;
 	MotionState = IDLE;
+
+	m_Power = 1.2f;
+	m_Jump = false;
+	m_OldY = TransInfo.Position.y;
 	
 	AniFrame = 85;
 	Speed = 1.2f;
 
+	m_Time = 0.0f;
+
+	BulletTime = GetTickCount64();
+	RateOfFire = 100.0f;
+	
 	FrameTime = GetTickCount64();
 	AniTime = GetTickCount64();
 }
 
 void Player::Update()
 {
+	if (FrameTime + 50 < GetTickCount64())
+	{
+		CheckKey(); //¹«½¼ Å°¸¦ ´­·¶´ÂÁö
+
+		Jump(); //Á¡ÇÁ
+		
+		FrameTime = GetTickCount64();
+	}
+
 	if (AniTime + AniFrame < GetTickCount64())
 	{
 		if (MotionState != IDLE)
@@ -127,18 +145,16 @@ void Player::Update()
 			if (Motion > Texture[m_Left][MotionState].size() - 1)
 			{
 				Motion = 0;
-			}
-			
-			AniTime = GetTickCount64();
+			}	
 		}
+		if (MotionState == IDLE)
+		{
+			Motion = 0;
+		}
+
+		AniTime = GetTickCount64();
 	}
 
-	if (FrameTime + 50 < GetTickCount64())
-	{
-		CheckKey();
-
-		FrameTime = GetTickCount64();
-	}
 }
 
 void Player::Render()
@@ -160,7 +176,28 @@ void Player::Release()
 
 void Player::Jump()
 {
+	if (!m_Jump)
+		return;
 
+	m_Time += 0.1f;
+
+	TransInfo.Position.y += -sinf(90 * PI / 180) * m_Power + (GRAVITY_ACCELERATION * m_Time * m_Time) / 2;
+
+	if (m_OldY < TransInfo.Position.y)
+	{
+		TransInfo.Position.y = m_OldY;
+		m_Jump = false;
+	}
+}
+
+void Player::CheckJump()
+{
+	if (m_Jump)
+		return;
+
+	m_Jump = true;
+	m_OldY = TransInfo.Position.y;
+	m_Time = 0.0f;
 }
 
 void Player::CheckKey()
@@ -169,15 +206,52 @@ void Player::CheckKey()
 
 	if (ulKey & KEYID_LEFT)
 	{
-		TransInfo.Position.x -= Speed;
+		if (TransInfo.Position.x > (TransInfo.Scale.x / 2))
+		{
+			TransInfo.Position.x -= Speed;
+		}
+
 		MotionState = WALK;
 		m_Left = DIR_LEFT;
 	}
 	if (ulKey & KEYID_RIGHT)
 	{
-		TransInfo.Position.x += Speed;
+		if (TransInfo.Position.x < 120 - (TransInfo.Scale.x / 2))
+		{
+			TransInfo.Position.x += Speed;
+		}
 		MotionState = WALK;
 		m_Left = DIR_RIGHT;
+	}
+	if (ulKey & KEYID_RETURN)
+	{
+		if (BulletTime + RateOfFire < GetTickCount64())
+		{
+
+			list<Object*> BulletList = *ObjectManager::GetInstance()->GetList("Bullet");
+
+			for (list<Object*>::iterator iter = BulletList.begin(); iter != BulletList.end() ; ++iter)
+			{
+				if (!(*iter)->isActive())
+				{
+					(*iter)->SetDirection(m_Left);
+					if (m_Left == DIR_LEFT)
+						(*iter)->SetPosition(Vector3(TransInfo.Position.x - 3, TransInfo.Position.y));
+
+					if (m_Left == DIR_RIGHT)
+						(*iter)->SetPosition(Vector3(TransInfo.Position.x + 3, TransInfo.Position.y));
+
+					(*iter)->SetActive(true);
+
+					break;
+				}
+			}
+			BulletTime = GetTickCount64();
+		}
+	}
+	if (ulKey & KEYID_SPACE)
+	{
+		CheckJump();
 	}
 	if (ulKey == 0)
 	{

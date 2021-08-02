@@ -4,16 +4,11 @@
 class Player : public Object
 {
 	//jump관련 변수
-	float m_Power;
-		 
-	bool m_Jumping;	
-	bool m_Drop;
-		 
-	float m_OldJumpY;
-	float m_MaximumY;
+	float m_Power;		 
+	bool m_Jump;			 
+	float m_OldY;
 
-	//보는 방향
-	MOTION_DIRECTION m_Left;
+	float m_Time;
 
 	//플레이어 이동 제어
 	ULONGLONG FrameTime;
@@ -25,8 +20,13 @@ class Player : public Object
 	int Motion;
 	float AniFrame;
 
+	//연사력
+	ULONGLONG BulletTime;
+	float RateOfFire;
+
 public:
 	void Jump();
+	void CheckJump();
 	void CheckKey();
 
 public:

@@ -16,6 +16,14 @@ ObjectManager* ObjectManager::Instance = NULL;
 void ObjectManager::Initialize()
 {
 	AddObject(ObjectFactory<Player>::CreateObject());
+
+	for (int i = 0; i < 128; i++)
+	{
+		Object* _bullet = ObjectFactory<Bullet>::CreateObject();	
+		_bullet->SetActive(false);
+
+		AddObject(_bullet);
+	}
 }
 
 void ObjectManager::Update()
