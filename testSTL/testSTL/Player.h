@@ -4,10 +4,10 @@
 class Player : public Object
 {
 	//jump관련 변수
-	float m_Power;		 
-	bool m_Jump;			 
-	float m_OldY;
-	float m_Time;
+	float m_Power; //점프 뛸 때 힘
+	bool m_Jump; //점프 상태인지 아닌지
+	float m_OldY; //점프 뛰기 전의 높이
+	float m_Time; //점프를 하는 중에 흐른 시간
 
 	//플레이어 이동 제어
 	ULONGLONG FrameTime;
