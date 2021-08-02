@@ -7,7 +7,6 @@ class Player : public Object
 	float m_Power;		 
 	bool m_Jump;			 
 	float m_OldY;
-
 	float m_Time;
 
 	//플레이어 이동 제어
