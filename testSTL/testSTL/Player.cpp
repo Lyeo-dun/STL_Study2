@@ -14,7 +14,7 @@ Player::~Player()
 
 void Player::Initialize()
 {
-	m_pKey = "Player";
+	m_Key = "Player";
 
 	Active = true;
 
@@ -131,7 +131,8 @@ void Player::Update()
 	{
 		CheckKey(); //무슨 키를 눌렀는지
 
-		Jump(); //점프
+		if (m_Jump)
+			Jump(); //점프
 		
 		FrameTime = GetTickCount64();
 	}
@@ -176,9 +177,6 @@ void Player::Release()
 
 void Player::Jump()
 {
-	if (!m_Jump)
-		return;
-
 	m_Time += 0.1f;
 
 	TransInfo.Position.y += -sinf(90 * PI / 180) * m_Power + (GRAVITY_ACCELERATION * m_Time * m_Time) / 2;

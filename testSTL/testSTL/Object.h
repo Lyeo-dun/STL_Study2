@@ -11,7 +11,7 @@ protected:
 
 	bool Active;
 
-	string m_pKey;
+	string m_Key;
 public:
 	virtual void Initialize() = 0;
 	virtual void Update() = 0;
@@ -20,7 +20,7 @@ public:
 
 public:
 	//각 오브젝트 키값
-	string GetKey() { return m_pKey; }
+	string GetKey() { return m_Key; }
 	
 	//텍스쳐 세팅
 	void AddTexture(MOTION_DIRECTION _Dir, MOTION_KINDS _MotionKinds, int _MotionOrder, vector<char*> _texture);

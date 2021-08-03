@@ -52,6 +52,12 @@
     <Filter Include="소스 파일\99. Manager\InputManager">
       <UniqueIdentifier>{96e255a7-576c-4d0b-b518-f15e9f87d37b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\02. Object\Enemy">
+      <UniqueIdentifier>{d0ea0a83-95ea-430b-820a-46b6f1b3a3d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99. Manager\MathManager">
+      <UniqueIdentifier>{a78ddca0-7290-4166-b64d-f721f7295c86}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -86,6 +92,9 @@
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>소스 파일\99. Manager\InputManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>소스 파일\02. Object\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +145,12 @@
     </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>소스 파일\99. Manager\InputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>소스 파일\02. Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="MathManager.h">
+      <Filter>소스 파일\99. Manager\MathManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

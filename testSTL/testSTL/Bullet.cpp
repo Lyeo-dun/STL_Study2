@@ -12,7 +12,7 @@ Bullet::~Bullet()
 
 void Bullet::Initialize()
 {
-	m_pKey = "Bullet";
+	m_Key = "Bullet";
 	TransInfo.Position = Vector3(0, 0);
 
 	vector<char*> _texture;
