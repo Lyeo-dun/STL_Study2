@@ -9,7 +9,12 @@ Stage::Stage()
 
 Stage::~Stage()
 {
-	Release();
+	Release(); 
+	/*
+	* 씬을 없앨 때 만들었던 데이터를 삭제하지 않은 채 Initialize를 하기 때문에 데이터가
+	* 두배로 생겨난다. 하지만 그정도의 데이터 양까지는 필요없고, 현재는 간단한 프로젝트 이므로
+	* 임시적으로 씬이 소멸할 때 release를 해주었다.
+	*/
 }
 
 void Stage::Initialize()
