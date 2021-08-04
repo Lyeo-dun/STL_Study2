@@ -23,9 +23,13 @@ public:
 
 private:
 	map<string, list<Object*>> ObjectList;
+	int EnemyCount;
 
 public:
 	void AddObject(Object* _pObj);
+
+	void SetEnemyCount(int _AddCount) { EnemyCount = _AddCount; }
+	int GetEnemyCount() { return EnemyCount; }
 
 	list<Object*>* GetList(string _strKey) {
 		map<string, list<Object*>>::iterator iter = ObjectList.find(_strKey);

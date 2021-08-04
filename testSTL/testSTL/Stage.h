@@ -1,8 +1,13 @@
 #pragma once
 #include "Scene.h"
 
+class Object;
 class Stage :public Scene
 {
+private:
+
+	ULONGLONG EnemySpawnTime;
+
 public:
 	virtual void Initialize()override;
 	virtual void Update()override;

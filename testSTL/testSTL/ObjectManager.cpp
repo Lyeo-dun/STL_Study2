@@ -2,6 +2,7 @@
 #include "ObjectFactory.h"
 #include "Player.h"
 #include "Bullet.h"
+#include "Enemy.h"
 
 ObjectManager::ObjectManager()
 {
@@ -19,11 +20,20 @@ void ObjectManager::Initialize()
 
 	for (int i = 0; i < 128; i++)
 	{
-		Object* _bullet = ObjectFactory<Bullet>::CreateObject();	
-		_bullet->SetActive(false);
+		{
+			Object* _bullet = ObjectFactory<Bullet>::CreateObject();	
+			_bullet->SetActive(false);
 
-		AddObject(_bullet);
+			AddObject(_bullet);
+		}
+		{
+			Object* _Enemy = ObjectFactory<Enemy>::CreateObject();
+			_Enemy->SetActive(false);
+
+			AddObject(_Enemy);
+		}
 	}
+	EnemyCount = 0;
 }
 
 void ObjectManager::Update()

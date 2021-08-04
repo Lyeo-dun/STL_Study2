@@ -2,7 +2,7 @@
 
 int main(void)
 {
-
+	srand(GetTickCount64());
 	MainUpdate Main;
 
 	Main.Initialize();
