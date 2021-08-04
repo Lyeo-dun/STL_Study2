@@ -24,7 +24,7 @@ void Enemy::Initialize()
 	AddTexture(DIR_CENTER, ENEMY, 0, _texture);
 	_texture.clear();
 
-	TransInfo.Scale = Vector3(strlen((char*)"(====)"), 3);
+	TransInfo.Scale = Vector3(strlen((char*)"(====)"), _texture.size());
 	Direction = Vector3(0, 0);
 	Speed = 0.8f;
 
