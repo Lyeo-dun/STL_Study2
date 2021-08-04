@@ -24,12 +24,16 @@ public:
 private:
 	map<string, list<Object*>> ObjectList;
 	int EnemyCount;
+	bool MoveScene;
+	bool SetObjectList;
 
 public:
 	void AddObject(Object* _pObj);
 
 	void SetEnemyCount(int _AddCount) { EnemyCount = _AddCount; }
 	int GetEnemyCount() { return EnemyCount; }
+	void SetMoveScene(bool _isMove) { MoveScene = _isMove; }
+	bool GetMoveScene() { return MoveScene; }
 
 	list<Object*>* GetList(string _strKey) {
 		map<string, list<Object*>>::iterator iter = ObjectList.find(_strKey);

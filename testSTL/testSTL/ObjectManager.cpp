@@ -6,10 +6,12 @@
 
 ObjectManager::ObjectManager()
 {
+	SetObjectList = false;
 }
 
 ObjectManager::~ObjectManager()
 {
+	Release();
 }
 
 ObjectManager* ObjectManager::Instance = NULL;
@@ -34,6 +36,18 @@ void ObjectManager::Initialize()
 		}
 	}
 	EnemyCount = 0;
+
+	MoveScene = false;
+
+	SetObjectList = true;
+
+	for (map<string, list<Object*>>::iterator iter = ObjectList.begin(); iter != ObjectList.end(); ++iter)
+	{
+		for (list<Object*>::iterator iter2 = iter->second.begin(); iter2 != iter->second.end(); ++iter2)
+		{
+			(*iter2)->Initialize();
+		}
+	}
 }
 
 void ObjectManager::Update()

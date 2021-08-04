@@ -58,6 +58,12 @@
     <Filter Include="소스 파일\99. Manager\MathManager">
       <UniqueIdentifier>{a78ddca0-7290-4166-b64d-f721f7295c86}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\99. Manager\ColliderManager">
+      <UniqueIdentifier>{3cb97b3e-3d78-4f51-85f7-321edf12b972}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Scene\End">
+      <UniqueIdentifier>{d12339e5-24b3-4756-8f08-2ce7f17ff484}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -95,6 +101,9 @@
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>소스 파일\02. Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EndScene.cpp">
+      <Filter>소스 파일\01. Scene\End</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +160,12 @@
     </ClInclude>
     <ClInclude Include="MathManager.h">
       <Filter>소스 파일\99. Manager\MathManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ColliderManager.h">
+      <Filter>소스 파일\99. Manager\ColliderManager</Filter>
+    </ClInclude>
+    <ClInclude Include="EndScene.h">
+      <Filter>소스 파일\01. Scene\End</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

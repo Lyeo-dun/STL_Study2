@@ -1,5 +1,6 @@
 #include "Stage.h"
 #include "ObjectManager.h"
+#include "SceneManager.h"
 #include "Enemy.h"
 
 Stage::Stage()
@@ -55,12 +56,19 @@ void Stage::Update()
 		}
 	}
 
-	ObjectManager::GetInstance()->Update();
-
 	if (ObjectManager::GetInstance()->GetEnemyCount() >= 128)
 	{
 		ObjectManager::GetInstance()->SetEnemyCount(128);
 	}
+	
+	ObjectManager::GetInstance()->Update();
+
+	if (ObjectManager::GetInstance()->GetMoveScene())
+	{
+		Sleep(300);
+		SceneManager::GetInstace()->SetScene(SCENEID_ENDING);
+	}
+
 }
 
 void Stage::Render()

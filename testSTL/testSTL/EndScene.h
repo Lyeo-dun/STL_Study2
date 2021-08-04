@@ -1,10 +1,14 @@
 #pragma once
 #include "Scene.h"
 
-class Stage :public Scene
+class EndScene : public Scene
 {
-private:
-	ULONGLONG EnemySpawnTime;
+	int Choice;
+	vector<char*> Text;
+	Transform TextTrans;
+
+	ULONGLONG KeyInputStartTime;
+	ULONGLONG FrameTime;
 
 public:
 	virtual void Initialize()override;
@@ -13,7 +17,7 @@ public:
 	virtual void Release()override;
 
 public:
-	Stage();
-	virtual ~Stage()override;
+	EndScene();
+	virtual ~EndScene()override;
 };
 

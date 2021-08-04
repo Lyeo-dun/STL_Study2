@@ -26,17 +26,18 @@ public:
 	void AddTexture(MOTION_DIRECTION _Dir, MOTION_KINDS _MotionKinds, int _MotionOrder, vector<char*> _texture);
 
 	//transform에 대한 getter & setter
+	Transform GetTransform()const { return TransInfo; }
 	void SetPosition(Vector3 _pos) { TransInfo.Position = _pos; }
-	Vector3 GetPosition() { return TransInfo.Position; }
+	Vector3 GetPosition()const { return TransInfo.Position; }
 	void SetScale(Vector3 _scale) { TransInfo.Scale = _scale; }
-	Vector3 GetScale() { return TransInfo.Scale; }
+	Vector3 GetScale()const { return TransInfo.Scale; }
 
 	//active에 대한 컨트롤
 	void SetActive(const bool& _Active) { Active = _Active; }
 	bool isActive() { return Active; }
 
 	void SetDirection(MOTION_DIRECTION _Dir) { m_Left = _Dir; }
-	MOTION_DIRECTION GetDirection() { return m_Left; }
+	MOTION_DIRECTION GetDirection()const { return m_Left; }
 
 public:
 public:

@@ -18,13 +18,15 @@ void Bullet::Initialize()
 	vector<char*> _texture;
 
 	_texture.push_back((char*)"<--");
+	_texture.push_back((char*)"<--");
 	AddTexture(DIR_LEFT, BULLET, 0, _texture);
 	_texture.clear();
 
 	_texture.push_back((char*)"-->");
+	_texture.push_back((char*)"-->");
 	AddTexture(DIR_RIGHT, BULLET, 0, _texture);
+	TransInfo.Scale = Vector3(strlen((char*)"-->"), _texture.size());
 
-	TransInfo.Scale = Vector3(strlen((char*)"-->"), 1);
 	m_Left = DIR_LEFT;
 	Speed = 2.5f;
 	Active = false;

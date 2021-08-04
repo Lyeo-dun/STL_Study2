@@ -2,6 +2,7 @@
 #include "ObjectManager.h"
 #include "DoubleBuffer.h"
 #include "MathManager.h"
+#include "ColliderManager.h"
 
 Enemy::Enemy()
 {
@@ -10,6 +11,7 @@ Enemy::Enemy()
 Enemy::~Enemy()
 {
 }
+
 
 void Enemy::Initialize()
 {
@@ -21,10 +23,12 @@ void Enemy::Initialize()
 	_texture.push_back((char*)"(====)");
 	_texture.push_back((char*)"(====)");
 	_texture.push_back((char*)"(====)");
+
 	AddTexture(DIR_CENTER, ENEMY, 0, _texture);
+	TransInfo.Scale = Vector3(strlen((char*)"(====)"), _texture.size());
+
 	_texture.clear();
 
-	TransInfo.Scale = Vector3(strlen((char*)"(====)"), _texture.size());
 	Direction = Vector3(0, 0);
 	Speed = 0.8f;
 
@@ -44,24 +48,32 @@ void Enemy::Update()
 	{
 		if (!TargetCheck)
 		{
-			list<Object*> PlayerList = *ObjectManager::GetInstance()->GetList("Player");
-			TargetPos = PlayerList.front()->GetPosition();
-			Direction = MathManager::GetDirection(TransInfo.Position, TargetPos); 
-
-			TargetCheck = true;
+			TargetChecking();
 		}	
 		TransInfo.Position.x += Direction.x * Speed;
 		TransInfo.Position.y += Direction.y * Speed;
 
-
 		FrameTime = GetTickCount64();
 	}
 
-	if (TransInfo.Position.y >= 25 || TransInfo.Position.x >= 120 - TransInfo.Scale.x || TransInfo.Position.x <= TransInfo.Scale.x)
 	{
-		TargetCheck = false;
-		Active = false;	
-		ObjectManager::GetInstance()->SetEnemyCount(ObjectManager::GetInstance()->GetEnemyCount() - 1);
+		list<Object*> &BulletList = *ObjectManager::GetInstance()->GetList("Bullet");
+		for (list<Object*>::iterator iter = BulletList.begin(); iter != BulletList.end();++iter)
+		{
+			if((*iter)->isActive())
+				if (ColliderManager::CollisionRact(TransInfo, (*iter)->GetTransform()))
+				{
+					SetActiveFalse();
+					(*iter)->SetActive(false);
+
+					break;
+				}
+		}
+	}
+
+	if (TransInfo.Position.y > 28 || TransInfo.Position.x >= 120 - TransInfo.Scale.x || TransInfo.Position.x <= TransInfo.Scale.x)
+	{
+		SetActiveFalse();
 	}
 }
 
@@ -72,13 +84,30 @@ void Enemy::Render()
 	int y = 0;
 	for (vector<char*>::iterator iter = Map->second.begin(); iter != Map->second.end(); ++iter)
 	{
-		DoubleBuffer::GetInstance()->WriteBuffer((int)(TransInfo.Position.x - TransInfo.Scale.x / 2),
-			(int)(TransInfo.Position.y - TransInfo.Scale.y / 2) + y, (*iter), 15);
+		DoubleBuffer::GetInstance()->WriteBuffer((int)(TransInfo.Position.x - (TransInfo.Scale.x / 2)),
+			(int)(TransInfo.Position.y - (TransInfo.Scale.y / 2)) + y, (*iter), 15);
 		y++;
 	}
 }
+
 
 void Enemy::Release()
 {
 }
 
+
+void Enemy::SetActiveFalse()
+{
+	TargetCheck = false;
+	Active = false;
+	ObjectManager::GetInstance()->SetEnemyCount(ObjectManager::GetInstance()->GetEnemyCount() - 1);
+}
+
+void Enemy::TargetChecking()
+{
+	list<Object*> PlayerList = *ObjectManager::GetInstance()->GetList("Player");
+	TargetPos = PlayerList.front()->GetPosition();
+	Direction = MathManager::GetDirection(TransInfo.Position, TargetPos);
+
+	TargetCheck = true;
+}

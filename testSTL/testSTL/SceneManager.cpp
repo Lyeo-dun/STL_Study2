@@ -1,5 +1,6 @@
 #include "SceneManager.h"
 #include "Stage.h"
+#include "EndScene.h"
 
 
 SceneManager* SceneManager::Instance = NULL;
@@ -10,6 +11,7 @@ SceneManager::SceneManager()
 
 SceneManager::~SceneManager()
 {
+	Release();
 }
 
 
@@ -21,6 +23,9 @@ void SceneManager::SetScene(SCENEID _SceneId)
 	{
 	case SCENEID_STAGE:
 		SceneState = new Stage;
+		break;
+	case SCENEID_ENDING:
+		SceneState = new EndScene;
 		break;
 	}
 
@@ -39,5 +44,5 @@ void SceneManager::Render()
 
 void SceneManager::Release()
 {
-	SceneState->Release();
+	SAFE_RELEASE(SceneState);
 }

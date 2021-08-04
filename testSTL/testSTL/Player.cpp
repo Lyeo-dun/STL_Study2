@@ -3,6 +3,7 @@
 #include "ObjectFactory.h"
 #include "InputManager.h"
 #include "DoubleBuffer.h"
+#include "ColliderManager.h"
 
 Player::Player()
 {
@@ -19,7 +20,6 @@ void Player::Initialize()
 	Active = true;
 
 	TransInfo.Position = Vector3(30, 28);
-	TransInfo.Scale = Vector3(strlen("(|-)>"), 3);
 	
 
 	//플레이어 텍스쳐 작업
@@ -32,6 +32,7 @@ void Player::Initialize()
 		Left.push_back((char*)"  / ＼");
 
 		AddTexture(DIR_LEFT, IDLE, 0, Left);
+		TransInfo.Scale = Vector3(strlen("(|-)>"), Left.size());
 		Left.clear();
 
 		//걷기
@@ -154,6 +155,19 @@ void Player::Update()
 		}
 
 		AniTime = GetTickCount64();
+	}
+
+	{
+		list<Object*>& EnemyList = *ObjectManager::GetInstance()->GetList("Enemy");
+		for (list<Object*>::iterator iter = EnemyList.begin(); iter != EnemyList.end(); ++iter)
+		{
+			if ((*iter)->isActive())
+				if (ColliderManager::CollisionRact(TransInfo, (*iter)->GetTransform()))
+				{
+					ObjectManager::GetInstance()->SetMoveScene(true);
+					break;
+				}
+		}
 	}
 
 }

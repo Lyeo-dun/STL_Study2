@@ -16,6 +16,9 @@ class Enemy : public Object
 	ULONGLONG FrameTime;
 
 public:
+	void SetActiveFalse();
+	void TargetChecking();
+public:
 	virtual void Initialize();
 	virtual void Update();
 	virtual void Render();
