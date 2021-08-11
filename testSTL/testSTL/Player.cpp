@@ -214,7 +214,7 @@ void Player::CheckJump()
 
 void Player::CheckKey()
 {
-	ULONG ulKey = InputManager::GetInstance()->GetKey();
+	ULONG ulKey = GETSINGLETON(InputManager)->GetKey();
 
 	if (ulKey & KEYID_LEFT)
 	{

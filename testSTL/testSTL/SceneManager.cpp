@@ -3,8 +3,6 @@
 #include "EndScene.h"
 
 
-SceneManager* SceneManager::Instance = NULL;
-
 SceneManager::SceneManager()
 {
 }

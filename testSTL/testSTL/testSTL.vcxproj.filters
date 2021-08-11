@@ -167,5 +167,8 @@
     <ClInclude Include="EndScene.h">
       <Filter>소스 파일\01. Scene\End</Filter>
     </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

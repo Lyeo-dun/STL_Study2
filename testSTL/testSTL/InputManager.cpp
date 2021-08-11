@@ -1,9 +1,6 @@
 #include "InputManager.h"
 #include "DoubleBuffer.h"
 
-
-InputManager* InputManager::m_pInstance = NULL;
-
 InputManager::InputManager()
 {
 }

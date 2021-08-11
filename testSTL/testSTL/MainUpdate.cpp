@@ -15,13 +15,13 @@ MainUpdate::~MainUpdate()
 void MainUpdate::Initialize()
 {
 	DoubleBuffer::GetInstance()->CreateBuffer(CONSOL_MAX_WIDTH, CONSOL_MAX_HEIGHT);
-	SceneManager::GetInstace()->SetScene(SCENEID_STAGE);
+	GETSINGLETON(SceneManager)->SetScene(SCENEID_STAGE);
 }
 
 void MainUpdate::Update()
 {
-	InputManager::GetInstance()->Checkkey();
-	SceneManager::GetInstace()->Update();
+	GETSINGLETON(InputManager)->Checkkey();
+	GETSINGLETON(SceneManager)->Update();
 
 	DoubleBuffer::GetInstance()->FlippingBuffer();
 	DoubleBuffer::GetInstance()->ClearBuffer();
@@ -29,11 +29,11 @@ void MainUpdate::Update()
 
 void MainUpdate::Render()
 {
-	SceneManager::GetInstace()->Render();
+	GETSINGLETON(SceneManager)->Render();
 }
 
 void MainUpdate::Release()
 {
-	SceneManager::GetInstace()->Release();
+	GETSINGLETON(SceneManager)->Release();
 	DoubleBuffer::GetInstance()->DestroyBuffer();
 }

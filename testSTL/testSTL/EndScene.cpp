@@ -45,7 +45,7 @@ void EndScene::Update()
 				switch (Choice)
 				{
 				case 0:
-					SceneManager::GetInstace()->SetScene(SCENEID_STAGE);
+					GETSINGLETON(SceneManager)->SetScene(SCENEID_STAGE);
 					break;
 				case 1:
 					Sleep(300);

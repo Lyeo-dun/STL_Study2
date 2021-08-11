@@ -13,3 +13,4 @@ using namespace std;
 #include "Enum.h"
 #include "Vector3.h"
 #include "Release.h"
+#include "Singleton.h"

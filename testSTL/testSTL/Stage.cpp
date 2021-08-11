@@ -72,7 +72,7 @@ void Stage::Update()
 	if (ObjectManager::GetInstance()->GetMoveScene())
 	{
 		Sleep(300);
-		SceneManager::GetInstace()->SetScene(SCENEID_ENDING);
+		GETSINGLETON(SceneManager)->SetScene(SCENEID_ENDING);
 	}
 
 }
